@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 //import packages
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
@@ -9,6 +11,7 @@ import 'color.dart';
 import 'svg_data/svg_gebeaude2.dart';
 import 'widget/dijkstra/namevaluemap.dart';
 import 'widget/dijkstra/shortest_path.dart';
+import 'screens/screen1_navigation.dart';
 
 void main() => runApp(const PHRoomNavigation());
 
@@ -43,16 +46,17 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
 
     _pageController = PageController();
 
-    pathColors = List<Color>.generate(
-      SvgData.paths.length,
-      (index) {
-        if (index == 0) {
-          return SvgData.paths[index][1]; // Erster Pfad nicht transparent
-        } else {
-          return Colors.transparent; // Andere Pfade transparent
-        }
-      },
-    );
+  pathColors = List<Color>.generate( //Festlegung der Farbe der Pfade
+    SvgData.paths.length,
+    (index) {
+      String pathValue = SvgData.paths[index][2]; // Wert im Pfad
+      if (pathValue == '0000') {
+        return SvgData.paths[index][1]; // Pfad mit Wert '0000'
+      } else {
+        return Colors.transparent;
+      }
+    },
+  );
   }
 
   @override
@@ -61,27 +65,21 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
     super.dispose();
   }
 
-  void changeColors() {
+  void changeColors() { //bei drücken des Buttons werden die benötigten Pfade eingeblendet 
     setState(() {
       pathColors = List<Color>.generate(SvgData.paths.length, (index) {
         if (outputdijkstra.contains(int.parse(SvgData.paths[index][2]))) {
           return SvgData.paths[index][1]; // Undurchsichtige Farbe für Pfade in outputdijkstra
+        } else if (SvgData.paths[index][2] != '0000') {
+        return Colors.transparent; // Transparente Farbe für andere Pfade, die nicht '0000' sind
         } else {
-          return Colors.transparent; // Transparente Farbe für andere Pfade
+          return pathColors[index];
         }
       });
     });
   }
 
-  bool showBorder = false; //später entfernen
-
-  void toggleBorder() { //später entfernen
-      setState(() {
-        showBorder = !showBorder;
-      });
-    }
-
-// String für Dropdown Buttons
+  // String für Dropdown Buttons
   String selectedValueFrom = '20200'; // Standardauswahl hier kommt die die zweite Zahl hinein und nicht der Klartext
   String selectedValueTo = '20200'; // Standardauswahl
 
@@ -152,7 +150,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
                           children: <Widget>[
                             FilledButton(
                               onPressed: () 
-                                {// Dein Dijkstra-Code hier
+                                {// Dijkstra
                                   int from = int.parse(selectedValueFrom);
                                   int to = int.parse(selectedValueTo);
                                   outputdijkstra = Dijkstra.findPathFromGraph(graph, from, to).map((dynamic value) => value as int).toList();
@@ -163,19 +161,19 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
                                 },
                               child: const Text('Starten')
                             ),
-                            Text('Start: $selectedValueFrom'),
-                            Text('Ziel: $selectedValueTo'),
+                            //Text('Start: $selectedValueFrom'),
+                            //Text('Ziel: $selectedValueTo'),
                           ],
                         ),
                         Expanded(
                           child: Center(
                             child: InteractiveViewer(
-                              boundaryMargin: EdgeInsets.all(20),
+                              boundaryMargin: EdgeInsets.all(500),
                               minScale: 0.5, // Mindestzoom-Faktor
-                              maxScale: 5.0, // Maximaler Zoom-Faktor
+                              maxScale: 4.0, // Maximaler Zoom-Faktor
                               child: Container(
-                                width: 400,
-                                height: 400,
+                                width: 500,
+                                height: 1000,
                                 child: Stack(
                                   children: List.generate(SvgData.paths.length, (index) {
                                     return CustomPaint(
@@ -201,7 +199,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavyBar(
+        bottomNavigationBar: BottomNavyBar( //Bottom-Navigation
             selectedIndex: _currentIndex,
             backgroundColor: meinePrimLight,
             onItemSelected: (index) {
@@ -224,6 +222,9 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
   }
 }
 
+
+
+
 class MyPainter extends CustomPainter {
   final Path path;
   final Color color;
@@ -234,7 +235,7 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
       ..color = color
-      ..strokeWidth = 4.0;
+      ..strokeWidth = 5.0;
     canvas.drawPath(path, paint);
   }
 
