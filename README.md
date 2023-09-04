@@ -4,6 +4,7 @@ Die Funktion der Navigation ist gegeben.
 
 ToDo's
 - Um bestehende Stockwerke und Gebäude erweitern
+- Problem bei Schriftendarstellung im SVG beheben (Package kommt nicht mit Zusammengesetzten Pfaden klar.
 - Übergang zwischen Stockwerken und Gebäuden darstellen
 - Weitere Inhalte in die App einfügen (Ideen)
   -   Gebäudeplan als PDF zur Vergügung stellen
