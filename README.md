@@ -1,6 +1,6 @@
 # phnavigation
 Beschreibung: Die App stellt mitthilfe einem Gebäudeplan interaktiv den kürzesten Weg von A nach B dar. Hierbei findet keine Standortübermittlung statt, sondern der Startpunkt muss manuell eingestellt werden.
-Die Funktion der Navigation ist gegeben.
+Die Funktion der Navigation ist gegeben. Die Dateien zur Erweiterung der Pläne sind unter /data zu finden.
 
 ToDo's
 - Um bestehende Stockwerke und Gebäude erweitern
