@@ -15,7 +15,7 @@ import 'screens/screen1_navigation.dart';
 
 void main() => runApp(const PHRoomNavigation());
 
-//custom color theme, edit in color.dart
+// Definition einer benutzerdefinierten Farbpalette (in color.dart anpassbar)
 ThemeData meinBasisTheme() {
   final basisTheme = ThemeData.light();
   return basisTheme.copyWith(
@@ -37,7 +37,7 @@ class PHRoomNavigation extends StatefulWidget {
 class _PHRoomNavigationState extends State<PHRoomNavigation> {
   int _currentIndex = 0;
   late PageController _pageController;
-  List<int> outputdijkstra = [];
+  List<int> outputdijkstra = []; //Liste für Dijkstra-Algorithmus
   List<Color> pathColors = [];
 
   @override
@@ -46,6 +46,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
 
     _pageController = PageController();
 
+  // Festlegung der Anfangsfarben für die Pfade
   pathColors = List<Color>.generate( //Festlegung der Farbe der Pfade
     SvgData.paths.length,
     (index) {
@@ -66,6 +67,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
   }
 
   void changeColors() { //bei drücken des Buttons werden die benötigten Pfade eingeblendet 
+  // Aktualisieren der Pfadfarben basierend auf dem berechneten Dijkstra-Pfad
     setState(() {
       pathColors = List<Color>.generate(SvgData.paths.length, (index) {
         if (outputdijkstra.contains(int.parse(SvgData.paths[index][2]))) {
@@ -80,7 +82,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
   }
 
   // String für Dropdown Buttons
-  String selectedValueFrom = '20200'; // Standardauswahl hier kommt die die zweite Zahl hinein und nicht der Klartext
+  String selectedValueFrom = '20200'; // Standardauswahl (Wert, nicht Klartext)
   String selectedValueTo = '20200'; // Standardauswahl
 
   @override
@@ -109,10 +111,11 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
                   Center(
                       child: Column(
                       children: [
+                        //Navigationsbereich
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            //Dropdown
+                            //Dropdown Von
                             DropdownButton<String>(
                               value: selectedValueFrom,
                               onChanged: (newValue) {
@@ -128,7 +131,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
                               }).toList(),
                             ),
                             const SizedBox(width: 20),
-                            //dropdown
+                            //Dropdown Bis
                             DropdownButton<String>(
                               value: selectedValueTo,
                               onChanged: (newValue) {
@@ -148,7 +151,7 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            FilledButton(
+                            FilledButton( //Button Pfad anzeigen
                               onPressed: () 
                                 {// Dijkstra
                                   int from = int.parse(selectedValueFrom);
@@ -167,13 +170,13 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
                         ),
                         Expanded(
                           child: Center(
-                            child: InteractiveViewer(
+                            child: InteractiveViewer( //Darstellung SVG
                               boundaryMargin: EdgeInsets.all(500),
                               minScale: 0.5, // Mindestzoom-Faktor
                               maxScale: 4.0, // Maximaler Zoom-Faktor
                               child: Container(
-                                width: 500,
-                                height: 1000,
+                                width: 500, //Bildbreite
+                                height: 1000, //Bildhöhe
                                 child: Stack(
                                   children: List.generate(SvgData.paths.length, (index) {
                                     return CustomPaint(
@@ -195,11 +198,13 @@ class _PHRoomNavigationState extends State<PHRoomNavigation> {
               //Seite 2
               Container(
                 color: meineSekuDunke,
+                // Hier kann der Inhalt für Seite 2 hinzugefügt werden
               ),
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavyBar( //Bottom-Navigation
+        bottomNavigationBar: BottomNavyBar( 
+            //Bottom-Navigation
             selectedIndex: _currentIndex,
             backgroundColor: meinePrimLight,
             onItemSelected: (index) {
