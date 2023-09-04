@@ -6,10 +6,10 @@ ToDo's
 - Um bestehende Stockwerke und Gebäude erweitern
 - Übergang zwischen Stockwerken und Gebäuden darstellen
 - Weitere Inhalte in die App einfügen (Ideen)
--   Gebäudeplan als PDF zur Vergügung stellen
--   Rauminformationen
--   Belegungsplan
--   etc.
+  -   Gebäudeplan als PDF zur Vergügung stellen
+  -   Rauminformationen
+  -   Belegungsplan
+  -   etc.
 - Designkonzept weiter ausbauen
 
 Letztes Update: 04.09.2023
