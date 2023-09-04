@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:svg_path_parser/svg_path_parser.dart';
+
+// SVG-Datei: Gebäude 2, 2. Etage
+// ['pfad', farbe, 'raumbezeichnung'],
+// Raumbezeichnung XXXXX setzt sich zusammen aus 
+// 1. Ziffer: Gebäude
+// 2. Ziffer: Teil A=0, B=1, C=...
+// 3. Ziffer: Etage UG=0, EG=1, 1OG=2, 2OG=3, Wege=6-9
+// 4.-5. Ziffer: Raumnummern
+// Wände und übrigen Pfade: 0000
 class SvgData {
   static final List<List<dynamic>> paths = [
     // Es dürfen keine zusammengesetzten Pfade in Illustrator verwendet werden
