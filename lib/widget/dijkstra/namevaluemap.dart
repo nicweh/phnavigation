@@ -1,6 +1,6 @@
 String selectedName = "";
 Map<String, String> nameValueMap = {
-  //Klartext Raumnummer und Wert für Dijkstra-Algorithmus
+  //Klartext Raumnummer wird Wert für Dijkstra-Algorithmus zugeordnet
   //Gebäude A 1. Stockwerk
   '2.A100': '20200',
   '2.A101': '20201',
