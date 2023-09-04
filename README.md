@@ -1,6 +1,22 @@
 # phnavigation
+Beschreibung: Die App stellt mitthilfe einem Gebäudeplan interaktiv den kürzesten Weg von A nach B dar. Hierbei findet keine Standortübermittlung statt, sondern der Startpunkt muss manuell eingestellt werden.
+Die Funktion der Navigation ist gegeben.
 
-A new Flutter project.
+ToDo's
+- Um bestehende Stockwerke und Gebäude erweitern
+- Übergang zwischen Stockwerken und Gebäuden darstellen
+- Weitere Inhalte in die App einfügen (Ideen)
+-   Gebäudeplan als PDF zur Vergügung stellen
+-   Rauminformationen
+-   Belegungsplan
+-   etc.
+- Designkonzept weiter ausbauen
+
+Letztes Update: 04.09.2023
+Gruppe: 
+- PH Karlsruhe (Softwarepraktikum)
+- Gruppe: Celine von Poeppinghausen, Lilly Tokuc, Patrick Smuikat, Nicole Wehrlein, Torge Marzlin
+
 
 ## Getting Started
 
