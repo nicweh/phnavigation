@@ -13,6 +13,7 @@ ToDo's
 - Designkonzept weiter ausbauen
 
 Letztes Update: 04.09.2023
+
 Gruppe: 
 - PH Karlsruhe (Softwarepraktikum)
 - Gruppe: Celine von Poeppinghausen, Lilly Tokuc, Patrick Smuikat, Nicole Wehrlein, Torge Marzlin
