@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//Hier werden zentral die Farben festgelegt.
 
 const meinePrimFarbe = const Color(0xfff50057);
 const meinePrimLight = const Color(0xffe8eaf6);
