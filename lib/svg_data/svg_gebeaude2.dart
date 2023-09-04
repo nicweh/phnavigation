@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:svg_path_parser/svg_path_parser.dart';
 
-// SVG-Datei: Gebäude 2, 2. Etage
+// SVG-Datei Gebäude 2, 2. Etage wird hier dargestellt
 // ['pfad', farbe, 'raumbezeichnung'],
 // Raumbezeichnung XXXXX setzt sich zusammen aus 
 // 1. Ziffer: Gebäude
